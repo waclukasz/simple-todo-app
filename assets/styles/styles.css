@@ -1,0 +1,109 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 80px 0;
+  overflow-y: scroll;
+  background-color: #eff0ea;
+}
+
+.todo-box {
+  position: relative;
+  width: 450px;
+  height: 700px;
+  padding: 40px 30px;
+  box-shadow: 0px 3px 7px 3px #d5d5d5;
+  background-color: #ffffff;
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #5a5a5a;
+}
+
+.header-date {
+  display: flex;
+  align-items: center;
+}
+
+.date-day > p {
+  font-size: 38px;
+  font-weight: 600;
+}
+
+.date-box > p {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.date-box {
+  margin-left: 8px;
+}
+
+.todo-list-container {
+  margin-top: 50px;
+}
+
+.todo-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.todo-list-item.completed {
+  color: #d5d5d5;
+}
+
+.todo-list-item.completed .todo-complete-icon {
+  color: #29c11f;
+}
+
+.todo-list-item:hover .todo-remove-icon {
+  display: inline;
+} 
+
+.todo-complete-icon {
+  font-size: 18px;
+  color: #5a5a5a;
+  transition: color 250ms;
+}
+
+.todo-complete-icon:hover {
+  color: #29c11f;
+}
+
+.todo-remove-icon {
+  display: none;
+  font-size: 18px;
+  color: red;
+}
+
+.todo-add-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 90px;
+  width: 90px;
+  border-radius: 100%;
+  background-color: #91ec8b;
+  box-shadow: 2px 4px 5px 1px #96d396;
+  transition: background-color 300ms;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.todo-add-btn:hover {
+  background-color: #bef4ba;
+}
+
+.todo-add-btn:hover i {
+  color: #ffffff;
+}
+
+ .todo-add-btn > i {
+   color: #64bf54;
+   font-size: 22px;
+   transition: color 300ms;
+ }
