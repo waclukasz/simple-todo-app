@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/styles/reset.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="./assets/styles/styles.css">
+
+  <title>Magical Todo App</title>
+</head>
+
+<body>
+  <div
+    id="todoApp"
+    class="app-container"
+  >
+    <main class="todo-box">
+      <header class="todo-header">
+        <div class="header-date">
+          <div class="date-day">
+            <p>06</p>
+          </div>
+
+          <div class="date-box">
+            <p>DEC</p>
+            <p>2020</p>
+          </div>
+        </div>
+
+        <div class="header-day">
+          TUESDAY
+        </div>
+      </header>
+
+      <section class="todo-list-container">
+        <ul class="todo-list">
+          <li class="todo-list-item completed">
+            <p class="todo-name">
+              Get job done!
+            </p>
+            <div>
+              <button>
+                <i class="fas fa-trash todo-remove-icon"></i>
+              </button>
+              <button>
+                <i class="far fa-check-circle todo-complete-icon"></i>
+              </button>
+            </div>
+          </li>
+
+          <li class="todo-list-item">
+            <p class="todo-name">
+              Get a job!
+              <div>
+                <button>
+                  <i class="fas fa-trash todo-remove-icon"></i>
+                </button>
+                <button>
+                  <i class="far fa-check-circle todo-complete-icon"></i>
+                </button>
+              </div>
+          </li>
+        </ul>
+      </section>
+      <button class="todo-add-btn">
+        <i class="fas fa-plus"></i>
+      </button>
+    </main>
+  </div>
+</body>
+
+</html>
