@@ -102,8 +102,100 @@
   color: #ffffff;
 }
 
- .todo-add-btn > i {
-   color: #64bf54;
-   font-size: 22px;
-   transition: color 300ms;
- }
+.todo-add-btn > i {
+  color: #64bf54;
+  font-size: 22px;
+  transition: color 300ms;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000078;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-container {
+  height: 300px;
+  width: 500px;
+  padding: 24px 30px;
+  background-color: #ffffff; 
+  box-shadow: 0px 3px 7px 3px #616161;
+}
+
+.modal-header {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+/* .modal-container > h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.modal-container h2 {
+  font-size: 24px;
+  font-weight: 300;
+} */
+
+.modal-header ~ span {
+  font-size: 9px;
+}
+
+.input-label {
+  display: block;
+  margin-top: 30px;
+}
+
+.input-label > p {
+  margin-bottom: 3px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.task-input {
+  width: 100%;
+  font-size: 18px;
+  padding: 6px 12px;
+  border: none;
+  border-bottom: 1px solid #616161;
+}
+
+.task-input::placeholder {
+  color: #d5d5d5;
+  font-weight: 300;
+}
+
+.task-input:focus {
+  outline: 0;
+  border-color: #91ec8b;
+}
+
+.add-task-btn {
+  height: 34px;
+  width: 34px;
+  border-radius: 100%;
+  background-color: #91ec8b;
+  color: #ffffff;
+  box-shadow: 1px 2px 7px #8c8c8c;
+  transition: all 250ms;
+}
+
+.add-task-btn:hover {
+  filter: brightness(0.9);
+}
+
+.add-btn-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
