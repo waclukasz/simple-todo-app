@@ -1,27 +1,26 @@
 console.log('app is running');
 
-const taskList = []
+let taskList = localStorage.getItem(JSON.parse('taskList')) || [];
 
-const createTask = (task) => {
-  const taskTemplate = `
-    <li
-      data-id="${task.id}"
-      class="todo-list-item ${task.completed ? 'completed' : '' }"
-    >
-      <p class="todo-name">${task.taskName}</p>
-      <div>
-        <button>
-          <i class="fas fa-trash todo-remove-icon"></i>
-        </button>
-        <button>
-          <i class="far fa-check-circle todo-complete-icon"></i>
-        </button>
-      </div>
-    </li>
-  `
-
-  return taskTemplate;
+const removeTask = (id) => {
+  taskList = taskList.filter((task) => {
+    return task.id !== id;
+  })
+  renderTasks();
 }
+
+const addTaskBtnsListners = () => {
+  taskList.forEach((task) => {
+    document.getElementById(`btn-${task.id}`).addEventListener('click', () => {
+      toggleCompleted(task.id)
+    });
+
+    document.getElementById(`remove-${task.id}`).addEventListener('click', () => {
+      removeTask(task.id)
+    })
+  })
+}
+
 
 const renderTasks = () => {
   const taskListElement = document.getElementById('taskList');
@@ -33,8 +32,57 @@ const renderTasks = () => {
     });
 
     taskListElement.innerHTML = taskListsTemplate.join('');
+    addTaskBtnsListners();
+  } else {
+    taskListElement.innerHTML = `
+        <p class="no-task-header">Congrats! You hav no tasks!</p>
+      `;
   }
 }
+
+const createTask = (task) => {
+  const taskTemplate = `
+    <li
+      id="${task.id}"
+      class="todo-list-item ${task.completed ? 'completed' : '' }"
+    >
+      <p class="todo-name">${task.taskName}</p>
+      <div>
+        <button
+          id="remove-${task.id}"
+        >
+          <i class="fas fa-trash todo-remove-icon"></i>
+        </button>
+        <button
+          id="btn-${task.id}"
+        >
+          <i class="far fa-check-circle todo-complete-icon"></i>
+        </button>
+      </div>
+    </li>
+  `
+
+  return taskTemplate;
+}
+
+const toggleCompleted = (id) => {
+  document.getElementById(id).classList.toggle('completed');
+  console.log(taskList);
+  
+  taskList = taskList.map((task) => {
+    if (task.id === id) {
+      return {
+        ...task,
+        completed: !task.completed
+      }
+    }
+    
+    return task;
+  })
+
+  console.log(taskList);
+}
+
 
 const setDate = () => {
   const dayOfMonth = new Date().getDate();
@@ -62,10 +110,12 @@ const addTask = () => {
     id: Date.now()
   }
 
-  taskList.push(task);
+  taskList.unshift(task);
   renderTasks();
   taskInput.value = '';
-  
+
+  localStorage.setItem('taskList', JSON.stringify(taskList));
+
   toggleModal();
 }
 

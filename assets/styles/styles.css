@@ -224,6 +224,14 @@
   margin-top: 14px;
 }
 
+.no-task-header {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #8c8c8c;
+  font-weight: 300;
+}
+
 @keyframes fade-in {
   0% {
     opacity: 0.2;
