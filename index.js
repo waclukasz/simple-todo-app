@@ -1,5 +1,46 @@
 console.log('app is running');
 
+const taskList = [
+  {
+    taskName: 'Get Job Done!',
+    completed: false,
+    id: Date.now()
+  }
+]
+
+const createTask = (task) => {
+  const taskTemplate = `
+    <li
+      data-id="${task.id}"
+      class="todo-list-item ${task.completed ? 'completed' : '' }"
+    >
+      <p class="todo-name">${task.taskName}</p>
+      <div>
+        <button>
+          <i class="fas fa-trash todo-remove-icon"></i>
+        </button>
+        <button>
+          <i class="far fa-check-circle todo-complete-icon"></i>
+        </button>
+      </div>
+    </li>
+  `
+
+  return taskTemplate;
+}
+
+const renderTasks = () => {
+  const taskListElement = document.getElementById('taskList');
+
+  taskListElement.innerHTML = createTask(
+    {
+      taskName: 'Get Job Done!',
+      completed: true,
+      id: Date.now()
+    }
+  )
+}
+
 const setDate = () => {
   const dayOfMonth = new Date().getDate();
   const year = new Date().getFullYear();
@@ -18,12 +59,36 @@ const setDate = () => {
   headerDay.innerHTML = `<p>${dayName.toLocaleUpperCase()}</p>`
 }
 
-setDate();
+const addTask = () => {
+  const taskInput = document.getElementById('taskInput');
+  const task = {
+    taskName: taskInput.value,
+    completed: false,
+    id: Date.now()
+  }
+
+  taskList.push(task);
+  console.log(taskList);
+}
 
 const toggleModal = () => {
   const modal = document.getElementById('modal');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const addTaskBtn = document.getElementById('addTaskBtn');
+
   console.log(modal.classList.toggle('hidden'));
+
+  if (!modal.classList[1]) {
+    modalCloseBtn.addEventListener('click', toggleModal);
+    addTaskBtn.addEventListener('click', addTask);
+  } else {
+    modalCloseBtn.removeEventListener('click', toggleModal);
+    addTaskBtn.removeEventListener('click', addTask);
+  }
 }
 
 const todoAddBtn = document.getElementById('todoAddBtn');
 todoAddBtn.addEventListener('click', toggleModal);
+
+setDate();
+renderTasks();

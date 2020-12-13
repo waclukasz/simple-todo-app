@@ -44,8 +44,11 @@
         </header>
 
         <section class="todo-list-container">
-          <ul class="todo-list">
-            <li class="todo-list-item completed">
+          <ul 
+            id="taskList"
+            class="todo-list"
+          >
+            <!-- <li class="todo-list-item completed">
               <p class="todo-name">Get job done!</p>
               <div>
                 <button>
@@ -68,7 +71,7 @@
                   <i class="far fa-check-circle todo-complete-icon"></i>
                 </button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
         <button
@@ -84,6 +87,12 @@
         class="modal-overlay hidden"
       >
         <div class="modal-container">
+          <button
+            id="modalCloseBtn"
+            class="modal-close-btn"
+          >
+            <i class="fas fa-times"></i>
+          </button>
           <h2 class="modal-header">Add your task to do</h2>
           <!-- <label for="taskInput">Task name:</label>
         <input
@@ -93,13 +102,17 @@
           <label class="input-label">
             <p>Task name:</p>
             <input
+              id="taskInput"
               class="task-input"
               type="text"
               placeholder="Add something to do"
             />
           </label>
           <div class="add-btn-box">
-            <button class="add-task-btn">
+            <button
+              id="addTaskBtn" 
+              class="add-task-btn"
+            >
               <i class="fas fa-plus"></i>
             </button>
           </div>
