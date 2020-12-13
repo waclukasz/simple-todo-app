@@ -1,12 +1,6 @@
 console.log('app is running');
 
-const taskList = [
-  {
-    taskName: 'Get Job Done!',
-    completed: false,
-    id: Date.now()
-  }
-]
+const taskList = []
 
 const createTask = (task) => {
   const taskTemplate = `
@@ -31,14 +25,15 @@ const createTask = (task) => {
 
 const renderTasks = () => {
   const taskListElement = document.getElementById('taskList');
+  let taskListsTemplate = null;
 
-  taskListElement.innerHTML = createTask(
-    {
-      taskName: 'Get Job Done!',
-      completed: true,
-      id: Date.now()
-    }
-  )
+  if (taskList.length > 0) {
+    taskListsTemplate = taskList.map((taskItem) => {
+      return createTask(taskItem)
+    });
+
+    taskListElement.innerHTML = taskListsTemplate.join('');
+  }
 }
 
 const setDate = () => {
@@ -68,7 +63,10 @@ const addTask = () => {
   }
 
   taskList.push(task);
-  console.log(taskList);
+  renderTasks();
+  taskInput.value = '';
+  
+  toggleModal();
 }
 
 const toggleModal = () => {
